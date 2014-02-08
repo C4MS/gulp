@@ -20,6 +20,9 @@ gulp.task('scripts', function() {
       './assets/src/js/**/*.js'
     ])
     .pipe(plugins.uglify())
+    .pipe(plugins.rename(function(dir, base, ext) {
+      return base + '.min' + ext;
+    }))
     .pipe(gulp.dest('./assets/dist/js'));
 });
 
