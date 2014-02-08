@@ -6,12 +6,7 @@ gulp.task('scss', function() {
   return gulp.src([
       './assets/src/scss/**/*.scss'
     ])
-    .pipe(plugins.compass({
-      css: './assets/dist/css/',
-      sass: './assets/src/scss/',
-      image: './assets/src/images/',
-      sprite: './assets/dist/images/'
-    }))
+    .pipe(plugins.sass())
     .pipe(plugins.rename(function(dir, base, ext) {
       return base + '.min' + ext;
     }))
