@@ -14,9 +14,9 @@ module.exports = function TaskWatch(gulp, plugins, server) {
 
       // Watch HTML
       gulp.watch([
-          './**/*.html',
-          '!external/',
-          '!node_modules/',
+          '**/*.html',
+          '!external/**',
+          '!node_modules/**'
         ], ['html']);
 
       // Watch SCSS
