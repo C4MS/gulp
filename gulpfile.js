@@ -19,6 +19,10 @@ var taskClean = new TaskClean(gulp, plugins);
 var TaskGulp = require('./tasks/gulp');
 var taskGulp = new TaskGulp(gulp, plugins);
 
+// Run tasks on HTML
+var TaskHtml = require('./tasks/html');
+var taskHtml = new TaskHtml(gulp, plugins, server);
+
 // Run tasks on JavaScript
 var TaskJavaScript = require('./tasks/javascript');
 var taskJavaScript = new TaskJavaScript(gulp, plugins, server);

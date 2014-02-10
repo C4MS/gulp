@@ -10,24 +10,23 @@ module.exports = function TaskWatch(gulp, plugins, server) {
       }
 
       // Watch Gulp
-      gulp.watch('./gulp/**', [
-        'gulp'
-      ]);
+      gulp.watch(['gulp/**/*.js'], ['gulp']);
+
+      // Watch HTML
+      gulp.watch([
+          './**/*.html',
+          '!external/',
+          '!node_modules/',
+        ], ['html']);
 
       // Watch SCSS
-      gulp.watch('assets/src/scss/**', [
-        'scss'
-      ]);
+      gulp.watch(['assets/src/scss/**'], ['scss']);
 
       // Watch JavaScript
-      gulp.watch('assets/src/js/**', [
-        'scripts'
-      ]);
+      gulp.watch(['assets/src/js/**'], ['scripts']);
 
       // Watch images
-      gulp.watch('assets/src/img/**', [
-        'images'
-      ]);
+      gulp.watch(['assets/src/img/**'], ['images']);
     });
   });
 };
