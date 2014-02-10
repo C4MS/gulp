@@ -1,53 +1,28 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
+var tinylr = require('tiny-lr');
+var server = tinylr();
 
-// Run tasks on SCSS
-gulp.task('scss', function() {
-  return gulp.src([
-      './assets/src/scss/**/*.scss'
-    ])
-    .pipe(plugins.sass())
-    .pipe(plugins.rename(function(dir, base, ext) {
-      return base + '.min' + ext;
-    }))
-    .pipe(plugins.csso())
-    .pipe(gulp.dest('./assets/dist/css'))
-});
+// Run default tasks
+var TaskDefault = require('./tasks/default');
+var taskDefault = new TaskDefault(gulp);
+
+// Run tasks on watch
+var TaskWatch = require('./tasks/watch');
+var taskWatch = new TaskWatch(gulp, plugins, server);
+
+// Run tasks on Gulp
+var TaskGulp = require('./tasks/gulp');
+var taskGulp = new TaskGulp(gulp, plugins);
 
 // Run tasks on JavaScript
-gulp.task('scripts', function() {
-  return gulp.src([
-      './assets/src/js/**/*.js'
-    ])
-    .pipe(plugins.uglify())
-    .pipe(plugins.rename(function(dir, base, ext) {
-      return base + '.min' + ext;
-    }))
-    .pipe(gulp.dest('./assets/dist/js'));
-});
+var TaskJavaScript = require('./tasks/javascript');
+var taskJavaScript = new TaskJavaScript(gulp, plugins, server);
+
+// Run tasks on SCSS
+var TaskScss = require('./tasks/scss');
+var taskScss = new TaskScss(gulp, plugins, server);
 
 // Run tasks on images
-gulp.task('images', function() {
- return gulp.src('./assets/src/img/**')
-    .pipe(plugins.imagemin())
-    .pipe(gulp.dest('./assets/dist/img'));
-});
-
-gulp.task('watch', function () {
-  // Watch SCSS
-  gulp.watch('./assets/src/scss/**', [
-    'scss'
-  ]);
-
-  // Watch JavaScript
-  gulp.watch('./assets/src/js/**', [
-    'scripts'
-  ]);
-
-  // Watch images
-  gulp.watch('./assets/src/img/**', [
-    'images'
-  ]);
-});
-
-gulp.task('default', ['scripts', 'scss', 'images']);
+var TaskImages = require('./tasks/images');
+var taskImages = new TaskImages(gulp, plugins, server);
