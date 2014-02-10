@@ -15,17 +15,17 @@ module.exports = function TaskWatch(gulp, plugins, server) {
       ]);
 
       // Watch SCSS
-      gulp.watch('./assets/src/scss/**', [
+      gulp.watch('assets/src/scss/**', [
         'scss'
       ]);
 
       // Watch JavaScript
-      gulp.watch('./assets/src/js/**', [
+      gulp.watch('assets/src/js/**', [
         'scripts'
       ]);
 
       // Watch images
-      gulp.watch('./assets/src/img/**', [
+      gulp.watch('assets/src/img/**', [
         'images'
       ]);
     });

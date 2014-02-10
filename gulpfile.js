@@ -11,6 +11,10 @@ var taskDefault = new TaskDefault(gulp);
 var TaskWatch = require('./tasks/watch');
 var taskWatch = new TaskWatch(gulp, plugins, server);
 
+// Run clean tasks
+var TaskClean = require('./tasks/clean');
+var taskClean = new TaskClean(gulp, plugins);
+
 // Run tasks on Gulp
 var TaskGulp = require('./tasks/gulp');
 var taskGulp = new TaskGulp(gulp, plugins);

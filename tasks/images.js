@@ -3,9 +3,9 @@ module.exports = function TaskImages(gulp, plugins, server) {
 
   gulp.task('images', function() {
 
-    return gulp.src('./assets/src/img/**')
-      .pipe(plugins.imagemin())
-      .pipe(gulp.dest('./assets/dist/img'))
+    return gulp.src('assets/src/img/**')
+      .pipe(plugins.cache(plugins.imagemin()))
+      .pipe(gulp.dest('assets/dist/img'))
       .pipe(plugins.livereload(server));
   });
 };
