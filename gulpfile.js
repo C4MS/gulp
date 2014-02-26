@@ -1,5 +1,7 @@
 var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
+var plugins = require('gulp-load-plugins')({
+  camelize: true
+});
 var tinylr = require('tiny-lr');
 var server = tinylr();
 

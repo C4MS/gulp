@@ -4,9 +4,9 @@ module.exports = function TaskScss(gulp, plugins, server) {
   gulp.task('scss', function() {
 
     return gulp.src([
-        'assets/src/scss/**/*.scss'
+        'assets/src/scss/style.scss'
       ])
-      .pipe(plugins.sass())
+      .pipe(plugins.rubySass())
       .pipe(plugins.autoprefixer())
       .pipe(plugins.rename(function(dir, base, ext) {
         return base + '.min' + ext;
