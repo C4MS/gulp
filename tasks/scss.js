@@ -6,12 +6,12 @@ module.exports = function TaskScss(gulp, plugins, server) {
     return gulp.src([
         'assets/src/scss/style.scss'
       ])
-      .pipe(plugins.rubySass())
+      .pipe(plugins.sass())
       .pipe(plugins.autoprefixer())
-      .pipe(plugins.rename(function(dir, base, ext) {
-        return base + '.min' + ext;
+      .pipe(plugins.cssmin())
+      .pipe(plugins.rename(function(path) {
+        path.extname = '.min';
       }))
-      .pipe(plugins.csso())
       .pipe(gulp.dest('assets/dist/css'))
       .pipe(plugins.livereload(server));
   });

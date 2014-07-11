@@ -10,8 +10,8 @@ module.exports = function TaskJavaScript(gulp, plugins, server) {
       .pipe(plugins.jshint.reporter('jshint-stylish'))
       .pipe(plugins.concat('script.js'))
       .pipe(plugins.uglify())
-      .pipe(plugins.rename(function(dir, base, ext) {
-        return base + '.min' + ext;
+      .pipe(plugins.rename(function(path) {
+        path.extname = '.min';
       }))
       .pipe(gulp.dest('assets/dist/js'))
       .pipe(plugins.livereload(server));
