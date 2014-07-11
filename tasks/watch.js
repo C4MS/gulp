@@ -1,4 +1,4 @@
-module.exports = function TaskWatch(gulp, plugins, server) {
+module.exports = function TaskWatch(gulp, plugins) {
   'use strict';
 
   gulp.task('watch', function () {

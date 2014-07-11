@@ -1,4 +1,4 @@
-module.exports = function TaskScss(gulp, plugins, server) {
+module.exports = function TaskScss(gulp, plugins) {
   'use strict';
 
   gulp.task('scss', function() {
@@ -12,7 +12,6 @@ module.exports = function TaskScss(gulp, plugins, server) {
       .pipe(plugins.rename(function(path) {
         path.extname = '.min.css';
       }))
-      .pipe(gulp.dest('assets/dist/css'))
-      .pipe(plugins.livereload(server));
+      .pipe(gulp.dest('assets/dist/css'));
   });
 };

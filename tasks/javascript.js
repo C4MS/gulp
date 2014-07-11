@@ -13,7 +13,6 @@ module.exports = function TaskJavaScript(gulp, plugins, server) {
       .pipe(plugins.rename(function(path) {
         path.extname = '.min.js';
       }))
-      .pipe(gulp.dest('assets/dist/js'))
-      .pipe(plugins.livereload(server));
+      .pipe(gulp.dest('assets/dist/js'));
   });
 };

@@ -1,4 +1,4 @@
-module.exports = function TaskHtml(gulp, plugins, server) {
+module.exports = function TaskHtml(gulp, plugins) {
   'use strict';
 
   gulp.task('html', function() {
@@ -7,7 +7,6 @@ module.exports = function TaskHtml(gulp, plugins, server) {
         '**/*.html',
         '!external/**',
         '!node_modules/**'
-      ])
-      .pipe(plugins.livereload(server));
+      ]);
   });
 };
