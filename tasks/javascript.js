@@ -11,7 +11,7 @@ module.exports = function TaskJavaScript(gulp, plugins, server) {
       .pipe(plugins.concat('script.js'))
       .pipe(plugins.uglify())
       .pipe(plugins.rename(function(path) {
-        path.extname = '.min';
+        path.extname = '.min.js';
       }))
       .pipe(gulp.dest('assets/dist/js'))
       .pipe(plugins.livereload(server));

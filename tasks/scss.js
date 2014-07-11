@@ -10,7 +10,7 @@ module.exports = function TaskScss(gulp, plugins, server) {
       .pipe(plugins.autoprefixer())
       .pipe(plugins.cssmin())
       .pipe(plugins.rename(function(path) {
-        path.extname = '.min';
+        path.extname = '.min.css';
       }))
       .pipe(gulp.dest('assets/dist/css'))
       .pipe(plugins.livereload(server));
