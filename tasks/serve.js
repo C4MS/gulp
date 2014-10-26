@@ -4,22 +4,20 @@ module.exports = function TaskClean(gulp, browserSync, reload) {
   gulp.task('serve', function () {
     browserSync({
       notify: false,
-      server: {
-        baseDir: ['./']
-      }
+      proxy: 'localhost:80'
     });
 
 
     // Watch HTML
-    gulp.watch(['**/*.html'], reload);
+    gulp.watch(['./src/views/**/*.html'], ['html', reload]);
 
     // Watch SCSS
-    gulp.watch(['assets/src/scss/**/*.scss'], ['scss', reload]);
+    gulp.watch(['./src/scss/**/*.scss'], ['scss', reload]);
 
     // Watch JavaScript
-    gulp.watch(['assets/src/js/**/*.js'], ['javascript', reload]);
+    gulp.watch(['./src/js/**/*.js'], ['javascript', reload]);
 
     // Watch images
-    gulp.watch(['assets/src/img/**/*'], ['images', reload]);
+    gulp.watch(['./src/img/**/*.*'], ['images', reload]);
   });
 };

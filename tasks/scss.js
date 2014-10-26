@@ -4,14 +4,17 @@ module.exports = function TaskScss(gulp, plugins) {
   gulp.task('scss', function() {
 
     return gulp.src([
-        'assets/src/scss/style.scss'
+        './src/scss/**/*.scss'
       ])
+      .pipe(plugins.include())
       .pipe(plugins.sass())
+      .pipe(plugins.csslint('.csslintrc'))
+      .pipe(plugins.csslint.reporter())
       .pipe(plugins.autoprefixer())
       .pipe(plugins.cssmin())
       .pipe(plugins.rename(function(path) {
         path.extname = '.min.css';
       }))
-      .pipe(gulp.dest('assets/dist/css'));
+      .pipe(gulp.dest('./dist/css/'));
   });
 };

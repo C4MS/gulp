@@ -4,9 +4,10 @@ module.exports = function TaskHtml(gulp, plugins) {
   gulp.task('html', function() {
 
     return gulp.src([
-        '**/*.html',
-        '!external/**',
-        '!node_modules/**'
-      ]);
+        './src/views/**/*.html'
+      ])
+      .pipe(plugins.include())
+      .pipe(plugins.minifyHtml())
+      .pipe(gulp.dest('./dist/views/'));
   });
 };

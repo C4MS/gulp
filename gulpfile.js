@@ -8,25 +8,25 @@ var reload = browserSync.reload;
 var runSequence = require('run-sequence');
 
 // Run clean tasks
-require('./tasks/clean')(gulp, del);
+require('./gulp/clean')(gulp, del);
 
 // Run tasks on Gulp
-require('./tasks/gulp')(gulp, plugins);
+require('./gulp/gulp')(gulp, plugins);
 
 // Run tasks on HTML
-require('./tasks/html')(gulp, plugins);
+require('./gulp/html')(gulp, plugins);
 
 // Run tasks on JavaScript
-require('./tasks/javascript')(gulp, plugins);
+require('./gulp/javascript')(gulp, plugins);
 
 // Run tasks on SCSS
-require('./tasks/scss')(gulp, plugins);
+require('./gulp/scss')(gulp, plugins);
 
 // Run tasks on images
-require('./tasks/images')(gulp, plugins);
+require('./gulp/images')(gulp, plugins);
 
 // Run default tasks
-require('./tasks/default')(gulp, runSequence);
+require('./gulp/default')(gulp, runSequence);
 
 // Run tasks on watch using Browser Sync
-require('./tasks/serve')(gulp, browserSync, reload);
+require('./gulp/serve')(gulp, browserSync, reload);
