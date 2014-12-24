@@ -1,7 +1,7 @@
-module.exports = function TaskDefault(gulp) {
+module.exports = function TaskDefault(gulp, runSequence) {
   'use strict';
 
   gulp.task('default', ['clean'], function() {
-    gulp.start('scripts', 'scss', 'images');
+    runSequence('javascript', 'scss', 'images', 'html');
   });
 };

@@ -2,29 +2,31 @@ var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')({
   camelize: true
 });
-var tinylr = require('tiny-lr');
-var server = tinylr();
-
-// Run default tasks
-require('./tasks/default')(gulp);
-
-// Run tasks on watch
-require('./tasks/watch')(gulp, plugins, server);
+var browserSync = require('browser-sync');
+var del = require('del');
+var reload = browserSync.reload;
+var runSequence = require('run-sequence');
 
 // Run clean tasks
-require('./tasks/clean')(gulp, plugins);
+require('./gulp/clean')(gulp, del);
 
 // Run tasks on Gulp
-require('./tasks/gulp')(gulp, plugins);
+require('./gulp/gulp')(gulp, plugins);
 
 // Run tasks on HTML
-require('./tasks/html')(gulp, plugins, server);
+require('./gulp/html')(gulp, plugins);
 
 // Run tasks on JavaScript
-require('./tasks/javascript')(gulp, plugins, server);
+require('./gulp/javascript')(gulp, plugins);
 
 // Run tasks on SCSS
-require('./tasks/scss')(gulp, plugins, server);
+require('./gulp/scss')(gulp, plugins);
 
 // Run tasks on images
-require('./tasks/images')(gulp, plugins, server);
+require('./gulp/images')(gulp, plugins);
+
+// Run default tasks
+require('./gulp/default')(gulp, runSequence);
+
+// Run tasks on watch using Browser Sync
+require('./gulp/serve')(gulp, browserSync, reload);

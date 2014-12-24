@@ -1,18 +1,20 @@
-module.exports = function TaskScss(gulp, plugins, server) {
+module.exports = function TaskScss(gulp, plugins) {
   'use strict';
 
   gulp.task('scss', function() {
 
     return gulp.src([
-        'assets/src/scss/style.scss'
+        './src/scss/**/*.scss'
       ])
-      .pipe(plugins.rubySass())
+      .pipe(plugins.include())
+      .pipe(plugins.sass())
+      .pipe(plugins.csslint('.csslintrc'))
+      .pipe(plugins.csslint.reporter())
       .pipe(plugins.autoprefixer())
-      .pipe(plugins.rename(function(dir, base, ext) {
-        return base + '.min' + ext;
+      .pipe(plugins.cssmin())
+      .pipe(plugins.rename(function(path) {
+        path.extname = '.min.css';
       }))
-      .pipe(plugins.csso())
-      .pipe(gulp.dest('assets/dist/css'))
-      .pipe(plugins.livereload(server));
+      .pipe(gulp.dest('./dist/css/'));
   });
 };

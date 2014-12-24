@@ -1,13 +1,13 @@
-module.exports = function TaskHtml(gulp, plugins, server) {
+module.exports = function TaskHtml(gulp, plugins) {
   'use strict';
 
   gulp.task('html', function() {
 
     return gulp.src([
-        '**/*.html',
-        '!external/**',
-        '!node_modules/**'
+        './src/views/**/*.html'
       ])
-      .pipe(plugins.livereload(server));
+      .pipe(plugins.include())
+      .pipe(plugins.minifyHtml())
+      .pipe(gulp.dest('./dist/views/'));
   });
 };

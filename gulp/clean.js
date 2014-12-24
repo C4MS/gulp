@@ -1,15 +1,5 @@
-module.exports = function TaskClean(gulp, plugins) {
+module.exports = function TaskClean(gulp, del) {
   'use strict';
 
-  gulp.task('clean', function() {
-
-    return gulp.src([
-      'assets/dist/js/',
-      'assets/dist/css/',
-      'assets/dist/images/',
-    ],{
-      read: false
-    })
-    .pipe(plugins.clean());
-  });
+  gulp.task('clean', del.bind(null, ['./dist/*']));
 };
